@@ -15,8 +15,7 @@ class HashTable {
 
   set(key, value) {
     const index = this.hash(key);
-    this.table[index] = this.table[index].filter(el => el[0] !== key)
-    this.table[index] = this.table[index] ? [...this.table[index], [key, value]] : [[key, value]]
+    this.table[index] = this.table[index] ? [...this.table[index].filter(el => el[0] !== key), [key, value]] : [[key, value]]
     console.log(this.table[index], index)
     this.size++;
   }
