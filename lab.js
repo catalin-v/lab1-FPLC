@@ -1,3 +1,8 @@
+/**
+ * set: function to add a key value pair (it updates if key is already in)
+ * get: returns value coresponding to the key or null if it is not there
+ * remove: removes the key value pair corresponding to given key
+ */
 class HashTable {
   constructor() {
     this.table = new Array(1000);
@@ -22,8 +27,9 @@ class HashTable {
   }
 
   get(key) {
-    const target = this.hash(key);
-    return this.table[target].find(el => el[0] === key);
+    const target = this.hash(key)
+    const keyVal = this.table[target].find(el => el[0] === key)
+    return keyVal ? keyVal[1] : null
   }
 
   remove(key) {
@@ -45,5 +51,6 @@ class HashTable {
 var hashTable = new HashTable()
 hashTable.set('asd', 1)
 hashTable.set('dsa', 2)
+hashTable.set('asd', 4)
 hashTable.remove('dsa')
 console.log(hashTable.get('asd'))
